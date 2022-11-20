@@ -5,7 +5,7 @@ CreateThread(function()
     while true do
         Wait(1000)
         if not IsPedInAnyVehicle(PlayerPedId()) and inBenny then         
-            exports['qb-radialmenu']:AddOption(5)
+            exports['qb-radialmenu']:AddOption()
         end
     end
 end)
@@ -38,7 +38,7 @@ benny:onPlayerInOut(function(isPointInside)
     if isPointInside then
         inBenny = true
         if IsPedInAnyVehicle(PlayerPedId()) then 
-            exports['qb-radialmenu']:AddOption(5, {
+            MenuItemId = exports['qb-radialmenu']:AddOption({
                 id = 'benny',
                 title = 'Repair',
                 icon = 'car-crash',
@@ -49,6 +49,6 @@ benny:onPlayerInOut(function(isPointInside)
         end
     else
         inBenny = false
-        exports['qb-radialmenu']:RemoveOption(5)
+        exports['qb-radialmenu']:RemoveOption(MenuItemId)
     end
 end)
